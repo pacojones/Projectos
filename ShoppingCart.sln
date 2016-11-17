@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Business.Entities", "ShoppingCart.Business.Entities\ShoppingCart.Business.Entities.csproj", "{2F4EAE2F-982E-4C60-8ED9-7FB3B42D8B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Business.Core", "ShoppingCart.Business.Core\ShoppingCart.Business.Core.csproj", "{6FBD816C-30B7-45C3-9508-5A5E6FA3D6E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Common", "ShoppingCart.Common\ShoppingCart.Common.csproj", "{4C4E401C-B437-4464-BB8A-55D926CA5079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.DataAccess", "ShoppingCart.DataAccess\ShoppingCart.DataAccess.csproj", "{8D056E03-472D-45C0-AC9A-21EBC2E762CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.DataAccess.SqlServer", "ShoppingCart.DataAccess.SqlServer\ShoppingCart.DataAccess.SqlServer.csproj", "{3E26012B-05E9-4D69-BE9E-0B417340A0D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.UnitTests", "ShoppingCart.UnitTests\ShoppingCart.UnitTests.csproj", "{28B3092F-D450-48DC-8622-3993A253BDCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Presentation.Web", "ShoppingCart.Presentation.Web\ShoppingCart.Presentation.Web.csproj", "{732099A4-E258-47AB-A807-EBF65AE77CEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F4EAE2F-982E-4C60-8ED9-7FB3B42D8B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4EAE2F-982E-4C60-8ED9-7FB3B42D8B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4EAE2F-982E-4C60-8ED9-7FB3B42D8B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4EAE2F-982E-4C60-8ED9-7FB3B42D8B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FBD816C-30B7-45C3-9508-5A5E6FA3D6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FBD816C-30B7-45C3-9508-5A5E6FA3D6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FBD816C-30B7-45C3-9508-5A5E6FA3D6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FBD816C-30B7-45C3-9508-5A5E6FA3D6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C4E401C-B437-4464-BB8A-55D926CA5079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C4E401C-B437-4464-BB8A-55D926CA5079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C4E401C-B437-4464-BB8A-55D926CA5079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C4E401C-B437-4464-BB8A-55D926CA5079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D056E03-472D-45C0-AC9A-21EBC2E762CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D056E03-472D-45C0-AC9A-21EBC2E762CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D056E03-472D-45C0-AC9A-21EBC2E762CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D056E03-472D-45C0-AC9A-21EBC2E762CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E26012B-05E9-4D69-BE9E-0B417340A0D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E26012B-05E9-4D69-BE9E-0B417340A0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E26012B-05E9-4D69-BE9E-0B417340A0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E26012B-05E9-4D69-BE9E-0B417340A0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B3092F-D450-48DC-8622-3993A253BDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B3092F-D450-48DC-8622-3993A253BDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B3092F-D450-48DC-8622-3993A253BDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B3092F-D450-48DC-8622-3993A253BDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732099A4-E258-47AB-A807-EBF65AE77CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732099A4-E258-47AB-A807-EBF65AE77CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732099A4-E258-47AB-A807-EBF65AE77CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732099A4-E258-47AB-A807-EBF65AE77CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,102 @@
+﻿@model ShoppingCart.Presentation.Web.Models.ShoppingCartModel
+@{
+    ViewBag.Title = "Shopping cart";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@{ Html.RenderPartial("_Alerts");}
+
+@using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Id)
+
+    //  Label c/ número
+    //  Label c/ owner
+    //  Tabela com os items, EDITÁVEL com agrupamento por categoria
+
+    @Html.Label("Número: " + Model.Id.ToString());<br/>
+    @Html.Label("Criada por: " + Model.Owner.Name);<br/>
+
+    <div class="table-responsive">
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <th>Ordem</th>
+            <th>Item</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
+            <th>Loja</th>
+            <th>Estado</th>
+            </thead>
+            <tbody>
+                
+                @foreach (var shoppingCartItem in Model.Items)
+                {
+                    //  
+                    <tr>
+                        <td>@shoppingCartItem.Definition.Location.Order</td>
+                        <td>@shoppingCartItem.Definition.Description</td>
+                        <td>@shoppingCartItem.Definition.Location.Description /  @shoppingCartItem.Definition.Category.Description</td>                        
+                        <td>@Html.TextBox("AAA", @shoppingCartItem.Quantity)</td>
+                        <td>@Html.DropDownList("ddlStores", new SelectList(Model.Stores, "Id", "Description", shoppingCartItem.StoreID.ToString()), "Selecione loja", new {@class="form-control"})</td>
+                        <td>@shoppingCartItem.State.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        @if (Model.State.Code == "TER")
+        {
+            @Html.ActionLink("Imprimir", "Print", Model.Id, new { @class = "btn btn-primary btn-large" }) 
+            @Html.ActionLink("Reabrir", "Update", "REOP", new { @class = "btn btn-primary btn-large" })
+        }
+        else
+        {
+            @Html.ActionLink("Guardar", "Update", "SAVE", new { @class = "btn btn-primary btn-large" })
+            @Html.ActionLink("Finalizar", "Update", "FIN", new { @class = "btn btn-primary btn-large" })
+        }
+        
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jquery")
+
+        <script type="text/javascript">
+            $('#example').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
+                },
+                //
+                "columnDefs": [{ "visible": false, "targets": [0, 2] }],
+                //"order": [[ 2, 'asc' ]],
+                "displayLength": 25,
+                "drawCallback": function ( settings ) {
+                    var api = this.api();
+                    var rows = api.rows( {page:'current'} ).nodes();
+                    var last=null;
+ 
+                    api.column(2, {page:'current'} ).data().each( function ( group, i ) {
+                        if ( last !== group ) {
+                            $(rows).eq( i ).before(
+                                '<tr class="group"><td colspan="5">'+group+'</td></tr>'
+                            );
+ 
+                            last = group;
+                        }
+                    })
+                }
+            
+            //
+
+        });
+        </script>
+    }
+
+
+}

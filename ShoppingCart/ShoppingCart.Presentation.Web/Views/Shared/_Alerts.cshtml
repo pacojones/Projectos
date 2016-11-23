@@ -1,0 +1,15 @@
+﻿
+@{
+    var alerts = TempData.ContainsKey(Alert.TempDataKey)
+                ? (List<Alert>)TempData[Alert.TempDataKey]
+                : new List<Alert>();
+}
+
+@if (alerts.Any())
+    {
+        foreach (var alert in alerts)
+        {
+
+            @Html.Raw(alert.Message);
+    }
+}

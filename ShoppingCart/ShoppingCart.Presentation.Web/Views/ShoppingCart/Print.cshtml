@@ -1,0 +1,45 @@
+﻿@model ShoppingCart.Presentation.Web.Models.ShoppingCartModel
+@{
+    ViewBag.Title = "Print shopping cart";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="print">
+        @foreach (var store in Model.Stores.Where(s => Model.Items.Count(i => i.StoreID == s.Id) > 0))
+        {
+            <p style="font-weight:bold">@store.Description</p>
+
+            var categoryIds = Model.Items.Where(i => i.StoreID == store.Id).Select(i => i.Definition.CategoryID).Distinct();
+
+            foreach (var categoryId in categoryIds)
+            {
+                var category = Model.Items.First(i => i.Definition.CategoryID == categoryId).Definition.Category;
+
+                <p style="font-weight:bold">@category.Description</p>
+                <table cellspacing="0">
+                    <thead>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items.Where(i => i.StoreID == store.Id && i.Definition.CategoryID == category.Id))
+                        {
+                            <tr>
+                                <td style="width:200px">@item.Definition.Description</td>
+                                <td>@item.Quantity.ToString()</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+    <a class="btn btn-primary btn-large" href="#" onclick="window.print('print')">Imprimir</a>
+</body>
+</html>

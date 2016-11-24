@@ -1,6 +1,7 @@
 ﻿@model ShoppingCart.Presentation.Web.Models.ShoppingCartModel
 @{
     ViewBag.Title = "Print shopping cart";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@
                         <th>Quantidade</th>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Items.Where(i => i.StoreID == store.Id && i.Definition.CategoryID == category.Id))
+                        @foreach (var item in Model.Items.Where(i => i.StoreID == store.Id && i.Definition.CategoryID == category.Id && i.Quantity > 0))
                         {
                             <tr>
                                 <td style="width:200px">@item.Definition.Description</td>

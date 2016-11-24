@@ -56,15 +56,15 @@ namespace ShoppingCart.Presentation.Web.Controllers
 
             var shoppingCart = shoppingCartManager.Select(id.Value);
 
-            if (shoppingCart.State.Code!= "TER")
+            /*if (shoppingCart.State.Code!= "TER")
             {
                 return RedirectToAction("Select", new { id = 1 });
-            }
+            }*/
 
             ShoppingCartModel model = ShoppingCartModel.FromBusinessEntity(shoppingCart);
             model.Stores = StoreModel.FromBusinessEntityCollection(stores);
 
-            return View(model);
+            return PartialView(model);
         }
 
         public async Task<ActionResult> Update(string action)

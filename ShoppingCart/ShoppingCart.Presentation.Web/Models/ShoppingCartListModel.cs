@@ -35,7 +35,7 @@ namespace ShoppingCart.Presentation.Web.Models
         {
             get
             {
-                if (this.shoppingCarts.Any(sc => sc.State.Code == "OPEN"))
+                if (this.shoppingCarts != null && this.shoppingCarts.Any(sc => sc.State.Code == "OPEN"))
                 {
                     return this.shoppingCarts.First(sc => sc.State.Code == "OPEN").Id;
                 }

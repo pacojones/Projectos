@@ -56,30 +56,50 @@ namespace ShoppingCart.Presentation.Web.Controllers
 
             var shoppingCart = shoppingCartManager.Select(id.Value);
 
-            /*if (shoppingCart.State.Code!= "TER")
-            {
-                return RedirectToAction("Select", new { id = 1 });
-            }*/
-
             ShoppingCartModel model = ShoppingCartModel.FromBusinessEntity(shoppingCart);
             model.Stores = StoreModel.FromBusinessEntityCollection(stores);
 
             return PartialView(model);
         }
 
-        public async Task<ActionResult> Update(string action)
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Update(FormCollection action, string save, string finalize)
         {
+            string cartId = action["Id"].ToString();
+
             try
             {
-                //shoppingCartManager.Update(1, 1);
-                //return RedirectToAction("Select", new { id = 1 });
-                throw new ArgumentException("KAKAKA");
+                Business.Entities.ShoppingCart cart = new Business.Entities.ShoppingCart();
+
+                long actionId = save == "SAVE" ? 4 : 1;
+                
+                string[] iDs = action["hfID"].Split(',');
+                string[] quantity = action["txtQuantity"].Split(',');
+                string[] storeId = action["ddlStores"].Split(',');
+
+                for(int i = 0; i< iDs.Length; i++)
+                {
+                    Business.Entities.ShoppingCartItem item = new Business.Entities.ShoppingCartItem();
+                    item.ID = long.Parse(iDs[i]);
+                    item.Quantity = long.Parse(quantity[i]);
+                    item.StoreID = long.Parse(storeId[i]);
+
+                    cart.Items.Add(item);
+                }
+
+                cart.ID = long.Parse(cartId);
+
+                shoppingCartManager.Update(cart, actionId);
+
+                return RedirectToAction("Select", new { id = cartId });
             }
             catch(Exception ex)
             {
                 Danger(ex.Message);
-                return RedirectToAction("Select", new { id = 1 });
+                return RedirectToAction("Select", new { id = cartId });
             }
         }
+
     }
 }

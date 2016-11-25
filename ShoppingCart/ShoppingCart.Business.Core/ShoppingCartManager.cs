@@ -48,11 +48,8 @@ namespace ShoppingCart.Business.Core
             return this.shoppingCartDataMapper.GetByCriteria(new ShoppingCartListSearchCriteria());
         }
 
-        public void Update(long id, long actionId)
+        public void Update(Entities.ShoppingCart cart, long actionId)
         {
-            Entities.ShoppingCart cart = new Entities.ShoppingCart();
-            cart.ID = id;
-
             ShoppingCartUpdateCriteria criteria = new ShoppingCartUpdateCriteria();
             criteria.ActionID = actionId;
 

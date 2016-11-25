@@ -4,12 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ShoppingCart.Business.Entities
 {
     public class ShoppingCart : BusinessEntity
     {
-        private Collection<ShoppingCartItem> _items;
+        private ShoppingCartItemCollection _items;
 
         public long OwnerID { get; set; }
 
@@ -19,12 +20,12 @@ namespace ShoppingCart.Business.Entities
 
         public User Owner { get; set; }
 
-        public Collection<ShoppingCartItem> Items
+        public ShoppingCartItemCollection Items
         {
             get
             {
                 if (_items == null)
-                    _items = new Collection<ShoppingCartItem>();
+                    _items = new ShoppingCartItemCollection();
 
                 return _items;
             }

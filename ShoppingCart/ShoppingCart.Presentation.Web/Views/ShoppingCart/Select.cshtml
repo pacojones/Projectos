@@ -11,7 +11,7 @@
 
 @{ Html.RenderPartial("_Alerts");}
 
-@using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -36,16 +36,17 @@
             </thead>
             <tbody>
                 
-                @foreach (var shoppingCartItem in Model.Items)
+                @for (var i = 0; i < Model.Items.Count; i++)
                 {
-                    //  
+                    var shoppingCartItem = Model.Items[i];
+
                     <tr>
                         <td>@shoppingCartItem.Definition.Location.Order</td>
                         <td>@shoppingCartItem.Definition.Description</td>
                         <td>@shoppingCartItem.Definition.Location.Description /  @shoppingCartItem.Definition.Category.Description</td>                        
-                        <td>@Html.TextBox("AAA", @shoppingCartItem.Quantity)</td>
+                        <td>@Html.TextBox("txtQuantity", @shoppingCartItem.Quantity)</td>
                         <td>@Html.DropDownList("ddlStores", new SelectList(Model.Stores, "Id", "Description", shoppingCartItem.StoreID.ToString()), "Selecione loja", new {@class="form-control"})</td>
-                        <td>@shoppingCartItem.State.Description</td>
+                        <td>@Html.Hidden("hfID", @shoppingCartItem.Id.ToString()) @shoppingCartItem.State.Description</td>
                     </tr>
                 }
             </tbody>
@@ -58,8 +59,9 @@
         }
         else
         {
-            @Html.ActionLink("Guardar", "Update", "SAVE", new { @class = "btn btn-primary btn-large" })
-            @Html.ActionLink("Finalizar", "Update", "FIN", new { @class = "btn btn-primary btn-large" })
+            <input type="submit" name="save" value="Guardar" class="btn btn-primary btn-large" />
+            <input type="submit" name="finalize" value="Finalizar" class="btn btn-primary btn-large" />
+            @Html.ActionLink("Imprimir", "Print", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" })
         }
         
     </div>
@@ -92,6 +94,8 @@
                     })
                 }
             
+                
+
             //
 
         });

@@ -108,6 +108,8 @@ namespace ShoppingCart.DataAccess.SqlServer
                     cmd.Transaction.Commit();
 
                     outputResult = (long)cmd.Parameters["@O_R"].Value;
+
+                    break;
                 }
                 catch(SqlException ex)
                 {

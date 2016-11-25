@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ShoppingCart.Business.Entities
 {
+    [XmlRoot("Item")]
     public class ShoppingCartItem : BusinessEntity
     {
         public long CartID { get; set; }

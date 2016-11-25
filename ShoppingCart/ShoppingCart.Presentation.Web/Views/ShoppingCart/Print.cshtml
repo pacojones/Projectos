@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
-<body>
+<body style="font-family:Arial; font-size:8pt;">
     <div id="print">
         @foreach (var store in Model.Stores.Where(s => Model.Items.Count(i => i.StoreID == s.Id) > 0))
         {
@@ -27,6 +27,7 @@
                     <thead>
                         <th>Produto</th>
                         <th>Quantidade</th>
+                        <th>Confirmar</th>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.Items.Where(i => i.StoreID == store.Id && i.Definition.CategoryID == category.Id && i.Quantity > 0))
@@ -34,6 +35,7 @@
                             <tr>
                                 <td style="width:200px">@item.Definition.Description</td>
                                 <td>@item.Quantity.ToString()</td>
+                                <td>___</td>
                             </tr>
                         }
                     </tbody>

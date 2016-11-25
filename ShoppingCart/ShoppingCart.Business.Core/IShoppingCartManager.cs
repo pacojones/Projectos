@@ -12,7 +12,7 @@ namespace ShoppingCart.Business.Core
     {
         long Insert();
 
-        void Update(long id, long actionId);
+        void Update(Entities.ShoppingCart cart, long actionId);
 
         void ItemUpdate(long itemId, long quantity, long storeId);
 

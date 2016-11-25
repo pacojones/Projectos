@@ -86,6 +86,7 @@ namespace ShoppingCart.DataAccess.SqlServer
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add(ParametersNames.ShoppingCartID, item.ID);
             parameters.Add(ParametersNames.ActionID, shoppingCartUpdateCriteria.ActionID);
+            parameters.Add(ParametersNames.ShoppingCartItems, SerializationHelper.SerializeObject(item.Items));
 
             this.sqlHelper.ExecuteNonQuery(ProceduresNames.ShoppingCartUpdate, parameters);
         }
@@ -114,6 +115,8 @@ namespace ShoppingCart.DataAccess.SqlServer
             public const string ShoppingCartID = "@I_ShoppingCartID";
 
             public const string ActionID = "@I_ActionID";
+
+            public const string ShoppingCartItems = "@I_ShoppingCartItems";
         }
 
             #endregion

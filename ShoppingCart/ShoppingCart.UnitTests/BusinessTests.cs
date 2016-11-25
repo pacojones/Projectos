@@ -35,5 +35,11 @@ namespace ShoppingCart.UnitTests
             Assert.IsNotNull(shoppingCart.Items);
             Assert.IsTrue(shoppingCart.Items.Count > 0);
         }
+
+        [TestMethod]
+        public void Business_Test_Serializar()
+        {
+
+        }
     }
 }
